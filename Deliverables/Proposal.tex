@@ -1,0 +1,141 @@
+%--------------------------% 
+% PREAMBLE 1 - DO NOT EDIT %
+%--------------------------% 
+\input{Admin/Proposal/ProposalPreamble1.tex}
+
+%-----------------------------% 
+% PROJECT-SPECIFIC PARAMETERS %
+%-----------------------------% 
+%\newcommand{\thedraft}{(DRAFT)}
+\newcommand{\thedraft}{}
+
+\input{Admin/ProjectParameters.tex} % Project Title and Project Number
+
+%--------------------------% 
+% PREAMBLE 2 - DO NOT EDIT %
+%--------------------------%
+\input{Admin/Proposal/ProposalPreamble2.tex}
+
+\noindent \theshortclient, \newl 
+Thank you for providing a course-based consulting experience for the students of MAT 4376G Topics in Statistics (Introduction to Quantitative Consulting), offered by the Department of Mathematics and Statistics at the University of Ottawa during the 2019 Fall Term. \newl 
+This project will help them bridge the gap between theory and applications of mathematical, statistical, and analytical methods. Under my supervision, the students will work in small teams and treat this mock project as a real-world consulting opportunity, \textbf{with the caveat that no contractual obligation exists between your organization and the University}. \newl In particular, while the team will strive to provide useful and actionable insights into your problem, the University makes no guarantee that the project will be successful and, consequently, will not charge a fee for services rendered.  
+%--------------------------% 
+% PREAMBLE 3 - DO NOT EDIT %
+%--------------------------%
+\input{Admin/Proposal/ProposalPreamble3.tex}
+
+%-------------------%
+% START OF PROPOSAL %
+%-------------------%
+\section{Background}
+The Canada Energy Regulator (CER) works to keep energy moving safely across Canada. The organisation oversees the companies operating oil and gas pipelines and electrical power lines that cross a national, provincial, or territorial border. The CER helps Canada's economy by increasing investor confidence, establishing a sense of public trust, and aiding in Indigenous reputations. While ensuring that Canada's energy resources get to markets internationally in a responsible manner.
+
+Following the approval of major pipeline facilities, regulated companies are required to file biweekly construction reports. The reports contain progress updates, incident information, and various regulatory compliance data.
+
+Approximately ten major recent projects, with associated construction report filings, can be identified. CER is interested in creating structured datasets and analysing incidents from construction reports, including linkage to what is officially reported as incidents to the CER.
+Definitions between the two filings are not standardised and reporting thresholds are not consistent. CER is particularly interested in identifying opportunities where the regulator could make construction safer and also be provided with recommendations for data templates or incident definition consistency.
+
+\section{Objectives and Scope}
+
+There is a wealth of information and data contained within the biweekly PDF reports and incident data reported directly to CER, but it is difficult to spot patterns in the unstructured data. The main objective of this consulting project is to link incidents with reported data and biweekly construction reports in order to discover patterns and to identify opportunities to improve construction site safety. To accomplish this objective, we plan to: 
+\begin{itemize}[noitemsep]
+\item identify a specific format or template for biweekly construction reports;
+\item create structured datasets, and provide a statistical analysis between incidents from construction reports;
+\item identify opportunities where the regulator could make construction safer, and
+\item provide recommendations for data templates or definition consistency.
+\end{itemize}
+\section{Methodology}
+Here is an overview of the tasks to be completed (which may not necessarily be exhaustive):
+\begin{enumerate}
+    \item \textit{build and implement PDF scraper} for incident reports to collect data;
+    \item \textit{clean and process data}, and create structured datasets;
+    \item \textit{conduct statistical analysis}, including regression and classification models, to find trends or correlations between incidents, and 
+    \item \textit{create visualisations} and report on findings, in the form of a dashboard and a final report outlining all details of the analysis.
+\end{enumerate}
+
+\section{Milestones and Deliverables}
+The following deliverables will be provided to the CER:
+\begin{itemize}[noitemsep]
+    \item monthly progress reports updating on tasks accomplished;
+    \item code outlining scraping, cleaning, and analysis (R, Python, or other, TBD);
+    \item final report containing findings and conclusions, and 
+    \item dashboard to report findings of interest.
+\end{itemize}
+
+\section{Schedules and Assumptions}
+We expect the following to be delivered by the given dates:
+\begin{itemize}[noitemsep]
+    \item \textbf{Progress reports} - Oct 31, Nov 30
+    \item \textbf{Final report} - Dec 21
+    \item \textbf{Dashboard} - Dec 21
+\end{itemize}
+
+Provided that this proposal is agreed to by October 10, 2019, we expect the project to be completed by December 21. Unexpected circumstances may require adjustments to this schedule. Should there be a change in scope and/or level of effort required, the timeline will be modified accordingly through agreement with CER. If we are unable to complete a task in time, we will inform CER as soon as possible in order to re-organize the project’s priorities.
+
+\section{Resources and Costs}
+The team assigned to this project consists of Dr.\ Patrick Boily (team lead), Smit Patel, Maia Pelletier, Dhruv Pramod, and Andrew Willits (undergraduate students in statistics with strong analytical and problem-solving skills). The work will be completed using open-source software (R, Python, etc.) and Power BI, Microsoft's dashboard tool. We do not anticipate any need to travel for this project, although we suggest setting up a few meetings with CER to clarify questions relating to domain expertise, modeling approaches, and the available data. 
+\newl As this project is a mandatory component for the course \textit{MAT 4376E Introduction to Quantitative Consulting}, the client will not be charged for any work completed -- the total projected cost is thus nil. Note that this arrangement is only applicable within the context of the course and not necessarily applicable to extensions of this work or future work with CER. 
+\section{Invoicing}
+A mock invoice (with a total cost of 0\$) will be sent upon completion of the project, for your records. 
+\newpage\noindent
+We look forward to working with your organization in this matter, \newl 
+Regards, \newl
+\includegraphics[height=60pt]{Images/Signature_PB.png} \newl
+Patrick Boily, Ph.D. \hfill 541 STEM Complex\\
+Department of Mathematics and Statistics \hfill 150 Louis-Pasteur Private\\ 
+University of Ottawa \hfill Ottawa, ON, K1S 5B6 \newl
+Phone: 613-562-5800 ext. 3526\\ 
+Email: \newhref{mailto:pboily@uottawa.ca}{pboily@uottawa.ca}
+\begin{center}
+    \hrule
+\end{center}
+\appendix
+\section{Suggested Workplan}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Tasks & Expected Date of Completion & Expected Effort \\
+\hline
+\hline
+PDF Scraper & October 15 & 40hrs \\
+\hline
+Clean Data & November 1 & 30hrs \\
+\hline
+Preliminary/Exploratory Analysis & November 20 & 30hrs \\
+\hline
+Dashboard & December 15 & 30hrs \\
+\hline
+Final Analysis & December 15 & 60hrs \\
+\hline
+Final Report & December 21 & 30hrs \\
+\hline
+\end{tabular}
+\end{center}
+Based on the estimated time and effort, the total cost associated with this project would would be \$13,200 (+ HST), at an hourly rate of \$60/hour (student rate). Since this project is part of our course work, the cost to CER will be \$0.
+\section{Credentials}
+
+\input{Admin/ShortBios/Bio_PatrickBoily.tex}
+\begin{center}
+   \hrule
+\end{center}
+
+\noindent
+\input{Deliverables/Admin/ShortBios/Bio_SmitPatel.tex}
+\begin{center}
+    \hrule
+\end{center}
+
+\noindent
+\input{Deliverables/Admin/ShortBios/Bio_MaiaPelletier.tex}
+\begin{center}
+    \hrule
+\end{center}
+
+\noindent
+\input{Deliverables/Admin/ShortBios/Bio_DhruvPramod.tex}
+\newpage
+
+\noindent
+\input{Deliverables/Admin/ShortBios/Bio_AndrewWillits.tex}
+
+\end{document}

@@ -1,0 +1,10 @@
+*Canada Energy Regulator*, Project 1: _Construction Incidents on Pipelines_
+The Canada Energy Regulator (formerly National energy board) regulates major pipelines across the country (ie trans mountain pipeline). We are a full life cycle regulator, meaning, if they get approved, we oversee everything from construction to abandonment with an eye to prevent harm whether environmental of safety related.
+
+Following the approval of Major pipeline facilities (ie “section 52 applications”), regulated companies are required to file biweekly construction reports. The reports contain progress updates (eg where they are at in their construction), incident information (eg safety accidents on site) and various regulatory compliance data. There is no specific format or template for the report. Format employed in filings is PDF.
+
+Example of a construction report: C01058-1 Construction Progress Report No. 24 - A6W9I9 - https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3812093
+
+As you can see, this is a wealth of information, but hard to see patterns when they are stuck in pdfs, with no concept of temporal trends, correlations or across multiple major construction projects. We would love for your class to explore this data, particularly with an eye to safety/accidents.
+
+We can identify ten (or more) major recent projects for the students and the associated construction report filings (including the ongoing Trans Mountain Expansion project). Students will be asked to create structured datasets, and provide a statistical analysis between incidents from construction reports (including linkage to what is officially reported incidents to the CER (https://www.cer-rec.gc.ca/sftnvrnmnt/sft/dshbrd/mp/dt-eng.html). Definitions between the two filings are not standardized and reporting thresholds are not consistent.) Students will be also asked to identify opportunities where the regulator could make construction safer and also provide recommendations for data templates or definition consistency.

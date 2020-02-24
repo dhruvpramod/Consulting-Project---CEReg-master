@@ -1,0 +1,11 @@
+List of References
+----------------------
+
+Dashboard
+- https://www.data-action-lab.com/wp-content/uploads/2019/09/DSRS_DDVwE.pdf
+
+PDF Scraping
+- https://github.com/ropensci/tabulizer
+
+Tidy data
+- https://vita.had.co.nz/papers/tidy-data.pdf

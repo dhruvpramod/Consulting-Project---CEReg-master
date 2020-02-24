@@ -1,0 +1,64 @@
+Hello Patrick and warm hello to Smit, Maia, Dhruv, and Andrew!
+Thank you for your email and the enclosed Proposal. We are very excited to work with you!
+Below are the answers to the questions you sent us.
+Please feel free to get back to us with follow ups. We can also set up a conference call for next week, and have technical specialists from our organization join to provide more context for this project.
+Looking forward to our collaboration, J
+Margaret
+ 
+
+1) Are all the pdfs reporting using the same format? Can we have a few sample pdfs from each company (to make sure the pdf scraper is a viable option)? Can we have a pdf of a report of a significant event?
+ 
+Companies submit Construction Progress Reports (Reports) as part of a condition for regulatory authorization from the CER; only those projects upon which this condition is imposed will have Construction Progress Report filings. Conditions are unique to each project, and are imposed to address certain risks associated with given project. In terms of the Construction Progress Report Condition, categories of information include progress of construction activities, environmental, socio-economic, safety and security; non-compliance; measures undertaken to resolve each issue and noncompliance; and risk assessment. These are generally the themes addressed within the Reports, but the format utilized by each company is not consistent, as a template has not been set out by the CER. Reports are submitted at a frequency set out by the wording of the condition imposed on the project authorization (e.g. bi-weekly or monthly).  Reports are filed in PDF format.
+ 
+Here are the links to folders containing Construction Progress Reports for the following ten Projects:
+- Trans Mountain Pipeline Expansion (TMX) -  Condition 106 Construction Progress Report for September 2019 - A6Y4Y5 (link) - September 2019; [Trans Mountain Pipeline ULC]
+- North Montney – North Montney Construction Progress Report No. 27 (link) - September 16 through September 30, 2019; [NOVA Gas Transmission Ltd.]
+-2017 NGTL System Expansion - 2017 NGTL System Expansion Project - Condition 18 – Construction Progress Report No. 29 (link) - March 9, 2018 through March 22, 2018; [NOVA Gas Transmission Ltd.]
+- Towerbirch Expansion Project - Construction Progress Report No. 14 (link) - November 2, 2017, through November 16, 2017; [NOVA Gas Transmission Ltd.]
+-Northwest Mainline Komie North Extension - Chinchaga Lateral Loop No. 3 - Condition 15 Construction Progress Report No. 12 (link) -  April 16, 2014 through April 30, 2014; [NOVA Gas Transmission Ltd.]
+-Liege Lateral - Condition 11 Bi-Weekly Construction Progress Report No. 19 (link) - April 18, 2016 through May 1, 2016; [NOVA Gas Transmission Ltd.]
+-Line 3 Replacement Program - Condition 19 - Construction Progress Report (link) - September 2019; [Enbridge Pipelines Inc.]
+-Line 3 Replacement Program - Condition 27 - Construction Progress Report (link) – September 2019; [Enbridge Pipelines Inc.]
+-Spruce Ridge – Condition 11 of Order XG-W102-032-2018 - Construction Progress Report (link) – March 18 – April 1, 2019; [Westcoast Energy Inc.]
+-Wyndwood Pipeline Expansion - Condition 16 of Order XG-W102-014-2017 - Construction Progress Report (link) - Sep 29-Oct 16, 2018; [Westcoast Energy Inc.]
+ 
+I am also enclosing a drop box link that contains the most recent Report for each of the Projects listed above.
+https://www.dropbox.com/sh/netho18pp5xiloz/AADNJMQ_9fD-BCr5MjK3a1fSa?dl=0
+ 
+2) Safety and security tables in the pdfs-> What is the total value that is stated for each incident? Is it the total number of incidents for the period of the project?
+
+You will have to access the url links above to get all the reports. The information in each Report is available for that temporal period only. Cumulative statistics require adding data in each report.
+ 
+Please note that the incidents referenced within each Construction Progress Report may not all be considered ‘Incidents’ by the CER.  The CER considers an Incident to be a ‘reportable Incident’ pursuant to reporting requirements set out in Regulation, such as the Onshore Pipeline Regulations (OPR).  Within each Construction Progress Report, and depending on the respective Company’s terminology, the included ‘incidents’ may refer to occurrences of non-compliance to their own procedures.
+ 
+3) Incident data excel -> What qualifies as a "significant" incident?
+ 
+Reference to Excel sheets is CER’s Incident Data (link). This data definition is available in a data dictionary, available here.
+ 
+As per the link: ‘A significant incident is an acute event that results in:
+• death;
+• a serious injury (as defined in the OPR);
+• a fire or explosion that causes a pipeline or facility to be inoperative;
+• a LVP hydrocarbon release in excess of 1.5 m³ that leaves company property or the right-of-way;
+• a rupture; or
+• a toxic plume (as defined in CSA Z662).’
+ 
+Please note that the links referenced (CER’s Incident Data, and data dictionary), both pertain to ‘reportable Incidents’ pursuant to regulation.  These types of incidents, those listed above as ‘significant’, require specific Reporting to the CER, and the Construction Progress Reports required by Condition would not be used for that purpose. For more information regarding reportable events, please refer to the Event Reporting Guidelines: https://www.cer-rec.gc.ca/bts/ctrg/gnnb/rprtnggdlns/index-eng.html
+  
+4) Incident data excel -> What is the difference between submitted and initially submitted in the "status" section?
+
+The difference is between first notification vs. detailed incident report. Incidents need to be reported as soon as circumstances permit.   
+ 
+5) How many companies do you have working on the pipelines under you? The company names seem to be different for most incidents.
+ 
+The Excel data has ~ 45 companies. However, the Board regulated ~ 100 companies.  
+I added the company names in [square brackets] to the list of Projects above.
+
+Reportable Incidents are submitted by regulatory instrument holders (i.e. the company who holds the authorization from the CER).  Incidents are reported throughout the lifecycle of the facility, notably throughout operation, which spans many decades.  The CER’s Incident Data will include both incidents occurring during construction, as well as those occurring during operations.
+ 
+The Construction Progress Reports, specific to the period of time that a facility is under construction, will include the company’s ‘incidents’ during construction.  These will include instances where the company has self-identified non-compliance with its own procedures.  Inclusion of a ‘CER Reportable Incident’ in a Construction Progress Report, does not excuse the company from the reporting requirement set out in the Event Reporting Guidelines.  Its instances, where it has been in non-compliance with its own procedures, would not be submitted pursuant to the Event Reporting Guidelines, as these are not required.
+ 
+
+6) Incident data excel -> What is the difference between the two variables for incident type? (One called “incident type” and the other called “incident types”)
+ 
+The first Incident Type Column (Column B) indicates the primary incident type and the other Column  (Column AB) indicates all incident type selections (multiple). Use Column B.

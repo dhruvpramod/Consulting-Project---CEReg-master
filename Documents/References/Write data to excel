@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>R xlsx package : A quick start guide to manipulate Excel files in R - Easy Guides - Wiki - STHDA</title>
+<meta charset="UTF-8" />
+<meta name="generator" content="PHPBoost" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:image" content="http://www.sthda.com/english/logo_200px_fb_sharing.png">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:alt" content="STHDA Logo">
+        <meta property="og:description" content="Statistical tools for data analysis and visualization">
+        
+<link rel="stylesheet" href="/english/cache/css/sthda/css-cache-79b066d50842bc196d6b6bdbb35611f4.css" type="text/css" media="screen, print" />
+<link rel="stylesheet" href="/english/cache/css/sthda/css-cache-b1f68ae63569e5f1c64cbdb8c1b06af6.css" type="text/css" media="screen, print" />
+<link rel="shortcut icon" href="/english/logo.png" type="image/png" />
+<link rel="stylesheet" href="/english/templates/sthda/ak/knitr.rcode.style.css"/>
+<link rel="stylesheet" href="/english/templates/sthda/ak/style.blue.css"/>
+<link rel="stylesheet" href="/english/templates/sthda/ak/youtube.embed.light.css"/>
+<script type="text/javascript" src= "/english/templates/sthda/ak/youtube.embed.light.js"></script>
+ 
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<body itemscope="itemscope" itemtype="http://schema.org/WebPage">
+<header id="header">
+<div id="top-header">
+<div id="site-infos">
+<div id="site-logo" style="background-image: url(/english/images/customization/all_sthda-logo.png);"></div>
+<div id="site-name-container">
+<a id="site-name" href="/english/">STHDA</a>
+<!--=================AK================-->
+<span style="font-size:12px;">
+                    
+                    <a href="http://www.sthda.com/french" style="color:white;"> 
+                            <img src="/english/images/stats/countries/fr.png" class="valign_middle" style="width:15px;"/></a> 
+                    <a href="http://www.sthda.com/english" style="color:white;">
+                        <img src="/english/images/stats/countries/uk.png" class="valign_middle" style="width:15px;"/></a>
+                </span>
+                <!--================End AK==============-->
+<span id="site-slogan">Statistical tools for high-throughput data analysis</span>
+</div>
+</div>
+<div id="top-header-content">
+<div class="block-container">
+<div class="block-contents">
+<div>
+Licence: <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/" target="_blank"><img alt="Licence Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/fr/88x31.png" /></a>
+</div>
+</div>
+</div>
+<div id="module-mini-search">
+<form action="/english/search/search.php#results" onsubmit="return check_search_mini_form_post();" method="post">
+<div id="mini-search-form" class="input-element-button">
+<input type="search" id="TxTMiniSearched" title="Your search" name="q" value="" placeholder="Search...">
+<input type="hidden" id="search-token" name="token" value="7781d1ed9bbf9fe2">
+<button type="submit" name="search_submit"><i class="fa fa-search"></i></button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<div id="sub-header">
+<div id="sub-header-content">
+ 
+ 
+<nav id="cssmenu-1764" class="cssmenu cssmenu-horizontal cssmenu-with-submenu">
+<a href="/english/wiki/r-software" title="Link to page R & Data Mining" class="cssmenu-img cssmenu-img-level-0">
+</a>
+<ul class="level-0"> 
+<li>
+<a href="/english/" title="Link to page Home" class="cssmenu-title">Home</a>
+</li>
+ 
+ 
+<li class="has-sub" >
+<a href="/english/wiki/r-basics-quick-and-easy" title="Link to page Basics" class="cssmenu-title">Basics</a>
+ 
+<ul class="level-1"> 
+<li>
+<a href="/english/wiki/what-is-r-and-why-learning-r-programming" title="Link to page What's R and Why R?" class="cssmenu-title">What's R and Why R?</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/installing-r-and-rstudio-easy-r-programming" title="Link to page Installing R/RStudio" class="cssmenu-title">Installing R/RStudio</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/running-rstudio-and-setting-up-your-working-directory-easy-r-programming" title="Link to page Running R/RStudio" class="cssmenu-title">Running R/RStudio</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/easy-r-programming-basics" title="Link to page R Programming Basics" class="cssmenu-title">R Programming Basics</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/getting-help-with-functions-in-r-programming" title="Link to page Getting Help" class="cssmenu-title">Getting Help</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/installing-and-using-r-packages" title="Link to page Installing R Packages" class="cssmenu-title">Installing R Packages</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/r-built-in-data-sets" title="Link to page R Built-in data sets" class="cssmenu-title">R Built-in data sets</a>
+</li>
+</ul>
+</li>
+ 
+ 
+<li class="has-sub" >
+<span class="cssmenu-title">Data</span>
+ 
+<ul class="level-1"> 
+<li>
+<a href="/english/wiki/importing-data-into-r" title="Link to page Import" class="cssmenu-title">Import</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/exporting-data-from-r" title="Link to page Export" class="cssmenu-title">Export</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/preparing-and-reshaping-data-in-r-for-easier-analyses" title="Link to page Reshape" class="cssmenu-title">Reshape</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/data-manipulation-in-r" title="Link to page Manipulate" class="cssmenu-title">Manipulate</a>
+</li>
+</ul>
+</li>
+ 
+ 
+<li class="has-sub" >
+<a href="/english/wiki/data-visualization" title="Link to page Visualize" class="cssmenu-title">Visualize</a>
+ 
+<ul class="level-1"> 
+<li>
+<a href="/english/articles/32-r-graphics-essentials/" title="Link to page R Graphics Essentials" class="cssmenu-title">R Graphics Essentials</a>
+</li>
+ 
+<li>
+<a href="/english/articles/24-ggpubr-publication-ready-plots/" title="Link to page Easy Publication Ready Plots" class="cssmenu-title">Easy Publication Ready Plots</a>
+</li>
+ 
+<li>
+<a href="/english/articles/33-social-network-analysis/" title="Link to page Network Analysis and Visualization" class="cssmenu-title">Network Analysis and Visualization</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/ggplot2-essentials" title="Link to page GGplot2" class="cssmenu-title">GGplot2</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/r-base-graphs" title="Link to page R Base Graphs" class="cssmenu-title">R Base Graphs</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/lattice-graphs" title="Link to page Lattice Graphs" class="cssmenu-title">Lattice Graphs</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/3d-graphics" title="Link to page 3D Graphics" class="cssmenu-title">3D Graphics</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/the-elements-of-choosing-colors-for-great-data-visualization-in-r" title="Link to page How to Choose Great Colors?" class="cssmenu-title">How to Choose Great Colors?</a>
+</li>
+</ul>
+</li>
+ 
+ 
+<li class="has-sub" >
+<span class="cssmenu-title">Analyze</span>
+ 
+<ul class="level-1"> 
+ 
+<li class="has-sub" >
+<a href="/english/wiki/r-basic-statistics" title="Link to page Statistics" class="cssmenu-title">Statistics</a>
+ 
+<ul class="level-2"> 
+<li>
+<a href="/english/wiki/descriptive-statistics-and-graphics" title="Link to page Descriptive Statistics and Graphics" class="cssmenu-title">Descriptive Statistics and Graphics</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/normality-test-in-r" title="Link to page Normality Test in R" class="cssmenu-title">Normality Test in R</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/statistical-tests-and-assumptions" title="Link to page Statistical Tests and Assumptions" class="cssmenu-title">Statistical Tests and Assumptions</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/correlation-analyses-in-r" title="Link to page Correlation Analysis" class="cssmenu-title">Correlation Analysis</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/comparing-means-in-r" title="Link to page Comparing Means" class="cssmenu-title">Comparing Means</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/comparing-variances-in-r" title="Link to page Comparing Variances" class="cssmenu-title">Comparing Variances</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/comparing-proportions-in-r" title="Link to page Comparing Proportions" class="cssmenu-title">Comparing Proportions</a>
+</li>
+</ul>
+</li>
+ 
+ 
+<li class="has-sub" >
+<a href="/english/wiki/survival-analysis" title="Link to page Survival" class="cssmenu-title">Survival</a>
+ 
+<ul class="level-2"> 
+<li>
+<a href="/english/wiki/survival-analysis-basics" title="Link to page Survival Analysis Basics" class="cssmenu-title">Survival Analysis Basics</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/cox-proportional-hazards-model" title="Link to page Cox Proportional Hazards Model" class="cssmenu-title">Cox Proportional Hazards Model</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/cox-model-assumptions" title="Link to page Cox Model Assumptions" class="cssmenu-title">Cox Model Assumptions</a>
+</li>
+</ul>
+</li>
+ 
+ 
+<li class="has-sub" >
+<a href="/english/articles/25-cluster-analysis-in-r-practical-guide/" title="Link to page Clustering" class="cssmenu-title">Clustering</a>
+ 
+<ul class="level-2"> 
+<li>
+<a href="/english/articles/26-clustering-basics/" title="Link to page Clustering basics" class="cssmenu-title">Clustering basics</a>
+</li>
+ 
+<li>
+<a href="/english/articles/27-partitioning-clustering-essentials/" title="Link to page Partitioning clustering" class="cssmenu-title">Partitioning clustering</a>
+</li>
+ 
+<li>
+<a href="/english/articles/28-hierarchical-clustering-essentials/" title="Link to page Hierarchical clustering" class="cssmenu-title">Hierarchical clustering</a>
+</li>
+ 
+<li>
+<a href="/english/articles/29-cluster-validation-essentials/" title="Link to page Clustering Evaluation & Validation" class="cssmenu-title">Clustering Evaluation & Validation</a>
+</li>
+ 
+<li>
+<a href="/english/articles/30-advanced-clustering/" title="Link to page Advanced clustering" class="cssmenu-title">Advanced clustering</a>
+</li>
+ 
+<li>
+<a href="/english/articles/25-cluster-analysis-in-r-practical-guide/108-clustering-example-4-steps-you-should-know/" title="Link to page Quick Guide for Cluster Analysis" class="cssmenu-title">Quick Guide for Cluster Analysis</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/beautiful-dendrogram-visualizations-in-r-5-must-known-methods-unsupervised-machine-learning" title="Link to page Visualize Dendrograms: 5+ methods" class="cssmenu-title">Visualize Dendrograms: 5+ methods</a>
+</li>
+</ul>
+</li>
+ 
+<li>
+<a href="/english/articles/31-principal-component-methods-in-r-practical-guide/" title="Link to page Principal Component Methods" class="cssmenu-title">Principal Component Methods</a>
+</li>
+ 
+<li>
+<a href="/english/articles/11-machine-learning/" title="Link to page Machine Learning Essentials" class="cssmenu-title">Machine Learning Essentials</a>
+</li>
+</ul>
+</li>
+ 
+ 
+<li class="has-sub" >
+<span class="cssmenu-title">Products</span>
+ 
+<ul class="level-1"> 
+<li>
+<a href="/english/web/5-bookadvisor/" title="Link to page Books" class="cssmenu-title">Books</a>
+</li>
+ 
+ 
+<li class="has-sub" >
+<span class="cssmenu-title">R Packages</span>
+ 
+<ul class="level-2"> 
+<li>
+<a href="/english/wiki/factoextra-r-package-easy-multivariate-data-analyses-and-elegant-visualization" title="Link to page factoextra" class="cssmenu-title">factoextra</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/survminer-r-package-survival-data-analysis-and-visualization" title="Link to page survminer" class="cssmenu-title">survminer</a>
+</li>
+ 
+<li>
+<a href="/english/articles/24-ggpubr-publication-ready-plots/" title="Link to page ggpubr" class="cssmenu-title">ggpubr</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/ggcorrplot-visualization-of-a-correlation-matrix-using-ggplot2" title="Link to page ggcorrplot" class="cssmenu-title">ggcorrplot</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/fastqcr-an-r-package-facilitating-quality-controls-of-sequencing-data-for-large-numbers-of-samples" title="Link to page fastqcr" class="cssmenu-title">fastqcr</a>
+</li>
+</ul>
+</li>
+ 
+<li>
+<a href="/english/rsthda" title="Link to page Web App" class="cssmenu-title">Web App</a>
+</li>
+</ul>
+</li>
+ 
+<li>
+<a href="/english/pages/contribute-to-sthda" title="Link to page Contribute" class="cssmenu-title">Contribute</a>
+</li>
+ 
+ 
+<li class="has-sub" >
+<span class="cssmenu-title">Support</span>
+ 
+<ul class="level-1"> 
+<li>
+<a href="/english/forum" title="Link to page Forum" class="cssmenu-title">Forum</a>
+</li>
+ 
+<li>
+<a href="/english/contact" title="Link to page Contact" class="cssmenu-title">Contact</a>
+</li>
+</ul>
+</li>
+ 
+<li>
+<a href="http://www.alboukadel.com/" title="Link to page About" class="cssmenu-title">About</a>
+</li>
+</ul>
+</nav>
+</div>
+<div class="spacer"></div>
+</div>
+<div class="spacer"></div>
+</header>
+<div id="global">
+<aside id="menu-left">
+<div id="module-connect" class="connect-menu not-connected module-mini-container vertical">
+<div class="module-mini-top">
+<div class="sub-title">Sign in</div>
+</div>
+<div class="module-mini-contents connect-contents">
+<div class="connect-containers">
+<div class="connect-input-container vertical-fieldset" >
+<form action="/english/user/login/" method="post" onsubmit="return check_connect();" class="form-element">
+<label for="login">
+<span>Login</span>
+<input type="text" id="login" name="login" title="Login" placeholder="Login">
+</label>
+<label for="password">
+<span>Password</span>
+<input type="password" id="password" name="password" title="Password" placeholder="Password">
+</label>
+<label for="autoconnect">
+<span>Auto connect</span>
+<input checked="checked" type="checkbox" id="autoconnect" name="autoconnect" title="Auto connect">
+</label>
+<input type="hidden" name="redirect" value="/wiki/r-xlsx-package-a-quick-start-guide-to-manipulate-excel-files-in-r">
+<input type="hidden" name="token" value="7781d1ed9bbf9fe2">
+<button type="submit" name="authenticate" value="internal" class="submit">Sign in</button>
+</form>
+</div>
+<div class="connect-register-container">
+<a class="connect-register small" href="/english/user/registration/">
+<i class="fa fa-ticket"></i><span>Register</span>
+</a>
+<a class="social-connect fb" href="/english/user/login/?authenticate=fb">
+<i class="fa fa-facebook"></i><span>Sign in with Facebook</span>
+</a>
+</div>
+<div class="forget-pass-container">
+<a class="forgot-pass small" href="/english/user/password/lost/">
+<i class="fa fa-question-circle"></i><span>Forgotten password</span>
+</a>
+</div>
+</div>
+</div>
+<div class="module-mini-bottom">
+</div> 
+</div>
+<div class="module-mini-container">
+<div class="module-mini-top">
+<div class="sub-title">Welcome!</div>
+</div>
+<div class="module-mini-contents">
+<span style="color:#FC4E07;">Want to Learn More on R Programming and Data Science?</span><br>
+Follow us <a href="https://feedburner.google.com/fb/a/mailverify?uri=sthda&loc=en_US">by Email</a>
+<form style="border: 1px solid #2E9FDF;padding:3px;text-align:center; border-left: 6px solid #2E9FDF;" action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('https://feedburner.google.com/fb/a/mailverify?uri=sthda', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><p><input type="text" style="width:140px" name="email"/></p><input type="hidden" value="sthda" name="uri"/><input type="hidden" name="loc" value="en_US"/><input type="submit" value="Subscribe" /><p>by <a href="https://feedburner.google.com" target="_blank">FeedBurner</a></p></form>
+<br/>
+<div class="addthis_inline_follow_toolbox"></div>
+</div>
+<div class="module-mini-bottom">
+</div>
+</div>
+<div class="module-mini-container">
+<div class="module-mini-top">
+</div>
+<div class="module-mini-contents">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-5474463749888038"
+                         data-ad-slot="4712884969"
+                         data-ad-format="link"></ins>
+                    
+</div>
+<div class="module-mini-bottom">
+</div>
+</div>
+ 
+ 
+ 
+<div class="module-mini-container">
+<div class="module-mini-top menu-vertical-0 hidden-small-screens">
+<a href="/english/wiki/r-packages" title="Link to page R Packages" class="cssmenu-title sub-title">
+R Packages</a>
+</div>
+<div class="module-mini-contents">
+<nav id="cssmenu-1825" class="cssmenu cssmenu-vertical cssmenu-left cssmenu-with-submenu">
+<ul class="level-0"> 
+ 
+<li class="has-sub" >
+<a href="/english/wiki/factoextra-r-package-easy-multivariate-data-analyses-and-elegant-visualization" title="Link to page factoextra" class="cssmenu-title"><img src="/english/wiki/wiki_mini.png" alt="factoextra" height="16" width="16" /> factoextra</a>
+ 
+<ul class="level-1"> 
+<li>
+<a href="/english/wiki/factoextra-r-package-easy-multivariate-data-analyses-and-elegant-visualization" title="Link to page Overview" class="cssmenu-title">Overview</a>
+</li>
+ 
+<li>
+<a href="/english/rpkgs/factoextra" title="Link to page Official Doc" class="cssmenu-title">Official Doc</a>
+</li>
+ 
+ 
+<li class="has-sub" >
+<span class="cssmenu-title">Related Tutorials</span>
+ 
+<ul class="level-2"> 
+<li>
+<a href="/english/wiki/cluster-analysis-in-r-unsupervised-machine-learning" title="Link to page Cluster Analysis" class="cssmenu-title">Cluster Analysis</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/factor-analysis" title="Link to page Principal Component Methods" class="cssmenu-title">Principal Component Methods</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+ 
+ 
+<li class="has-sub" >
+<a href="/english/wiki/survminer-r-package-survival-data-analysis-and-visualization" title="Link to page survminer" class="cssmenu-title"><img src="/english/wiki/wiki_mini.png" alt="survminer" height="16" width="16" /> survminer</a>
+ 
+<ul class="level-1"> 
+<li>
+<a href="/english/wiki/survminer-r-package-survival-data-analysis-and-visualization" title="Link to page Overview" class="cssmenu-title">Overview</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/survminer-cheatsheet-to-create-easily-survival-plots" title="Link to page Cheatsheet" class="cssmenu-title">Cheatsheet</a>
+</li>
+ 
+<li>
+<a href="/english/rpkgs/survminer" title="Link to page Official Doc" class="cssmenu-title">Official Doc</a>
+</li>
+ 
+ 
+<li class="has-sub" >
+<span class="cssmenu-title">Related Tutorials</span>
+ 
+<ul class="level-2"> 
+<li>
+<a href="/english/wiki/survival-analysis" title="Link to page Survival Analysis" class="cssmenu-title">Survival Analysis</a>
+</li>
+</ul>
+</li>
+ 
+ 
+<li class="has-sub" >
+<span class="cssmenu-title">Release Posts</span>
+ 
+<ul class="level-2"> 
+<li>
+<a href="/english/wiki/survminer-0-3-0" title="Link to page v0.3.0" class="cssmenu-title">v0.3.0</a>
+</li>
+ 
+<li>
+<a href="/english/wiki/survminer-0-2-4" title="Link to page v0.2.4" class="cssmenu-title">v0.2.4</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+ 
+ 
+<li class="has-sub" >
+<a href="/english/articles/24-ggpubr-publication-ready-plots/" title="Link to page ggpubr" class="cssmenu-title"><img src="/english/wiki/wiki_mini.png" alt="ggpubr" height="16" width="16" /> ggpubr</a>
+ 
+<ul class="level-1"> 
+<li>
+<a href="/english/articles/24-ggpubr-publication-ready-plots/" title="Link to page Overview" class="cssmenu-title">Overview</a>
+</li>
+ 
+<li>
+<a href="/english/rpkgs/ggpubr/" title="Link to page Official Doc" class="cssmenu-title">Official Doc</a>
+</li>
+</ul>
+</li>
+ 
+ 
+<li class="has-sub" >
+<a href="/english/wiki/ggcorrplot-visualization-of-a-correlation-matrix-using-ggplot2" title="Link to page ggcorrplot" class="cssmenu-title"><img src="/english/wiki/wiki_mini.png" alt="ggcorrplot" height="16" width="16" /> ggcorrplot</a>
+ 
+<ul class="level-1"> 
+<li>
+<a href="/english/wiki/ggcorrplot-visualization-of-a-correlation-matrix-using-ggplot2" title="Link to page Overview" class="cssmenu-title">Overview</a>
+</li>
+</ul>
+</li>
+ 
+ 
+<li class="has-sub" >
+<a href="/english/wiki/fastqcr-an-r-package-facilitating-quality-controls-of-sequencing-data-for-large-numbers-of-samples" title="Link to page fastqcr" class="cssmenu-title"><img src="/english/wiki/wiki_mini.png" alt="fastqcr" height="16" width="16" /> fastqcr</a>
+ 
+<ul class="level-1"> 
+<li>
+<a href="/english/wiki/fastqcr-an-r-package-facilitating-quality-controls-of-sequencing-data-for-large-numbers-of-samples" title="Link to page Overview" class="cssmenu-title">Overview</a>
+</li>
+ 
+<li>
+<a href="/english/rpkgs/fastqcr/" title="Link to page Official Doc" class="cssmenu-title">Official Doc</a>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+ 
+</div>
+<div class="module-mini-bottom"></div>
+</div>
+<div class="module-mini-container">
+<div class="module-mini-top">
+</div>
+<div class="module-mini-contents">
+ <div>
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-5474463749888038"
+       data-ad-slot="8944608168"
+       data-ad-format="vertical"></ins>
+  
+</div>
+</div>
+<div class="module-mini-bottom">
+</div>
+</div>
+<div class="module-mini-container">
+<div class="module-mini-top">
+<div class="sub-title">Our Books</div>
+</div>
+<div class="module-mini-contents">
+   
+<div class = "small-block content-privileged-friends" style = "width:98%;">
+          <center>
+            <a href = "http://www.sthda.com/english/web/5-bookadvisor/52-r-graphics-essentials-for-great-data-visualization-200-practical-examples-you-want-to-know-for-data-science/" >
+              <img src = "http://www.sthda.com/english/upload/r-graphics-essentials-cookbook-200.png" /><br/>
+  R Graphics Essentials for Great Data Visualization: 200 Practical Examples You Want to Know for Data Science
+  </a>
+  <p class = "star-new"><i class="fa fa-star"></i> NEW!!</p>
+  </center>
+</div>
+<br/>
+<div class = "small-block" style = "width:98%">
+          <center>
+            <a href = "http://www.sthda.com/english/web/5-bookadvisor/17-practical-guide-to-cluster-analysis-in-r/" >
+              <img src = "http://www.sthda.com/english/upload/practical-guide-to-cluster-analysis-in-r.jpg" /><br/>
+          Practical Guide to Cluster Analysis in R
+      </a>
+      </center>
+</div>
+ 
+<br/>
+<div class = "small-block" style = "width:98%;">
+          <center>
+            <a href = "http://www.sthda.com/english/web/5-bookadvisor/50-practical-guide-to-principal-component-methods-in-r/" >
+              <img src = "http://www.sthda.com/english/sthda-upload/images/principal-component-methods-cover-200px.png" width = "100px", height="125px;" /><br/>
+  Practical Guide to Principal Component Methods in R
+  </a>
+  </center>
+</div>
+<br/>
+<br/><br/>
+<div style = "">
+    <a href="/english/download/3-ebooks/6-complete-guide-to-3d-plots-in-r/" target ="_blank">
+        <b>3D Plots in R</b> <br/><br/>
+        <img src="http://www.sthda.com/sthda/RDoc/images/3d-graphic-cover.png"  style = "width:180px"/>
+    </a>
+</div>
+</div>
+<div class="module-mini-bottom">
+</div>
+</div>
+<div id="module-mini-guestbook" class="module-mini-container">
+<div class="module-mini-top">
+<div class="sub-title">Guest Book</div>
+</div>
+<div class="module-mini-contents">
+<p>Thanks for sharing this fantastic blog. I really enjoy this blog. It is very informative and impressive. You keep writing and spreading this type of blogs.  geek squad support</p>
+<p class="small">By <span class="text-italic">Smith Alfred</span></p>
+<a class="small" href="/english/guestbook/">Guest Book</a>
+</div>
+<div class="module-mini-bottom">
+</div>
+</div>
+ 
+ 
+ 
+<div class="module-mini-container">
+<div class="module-mini-top menu-vertical-0 hidden-small-screens">
+Blogroll
+</div>
+<div class="module-mini-contents">
+<nav id="cssmenu-1849" class="cssmenu cssmenu-vertical cssmenu-left">
+<ul class="level-0"> 
+<li>
+<a href="https://www.datanovia.com/en/" title="Link to page Datanovia: Online Data Science Courses" class="cssmenu-title"><img src="/english/web/web_mini.png" alt="Datanovia: Online Data Science Courses" height="16" width="16" /> Datanovia: Online Data Science Courses</a>
+</li>
+ 
+<li>
+<a href="https://www.r-bloggers.com/" title="Link to page R-Bloggers" class="cssmenu-title"><img src="/english/web/web_mini.png" alt="R-Bloggers" height="16" width="16" /> R-Bloggers</a>
+</li>
+</ul>
+</nav>
+ 
+</div>
+<div class="module-mini-bottom"></div>
+</div>
+</aside>
+<div id="main" class="main-with-left" role="main">
+<div id="main-content" itemprop="mainContentOfPage">
+<menu id="cssmenu-module-wiki" class="cssmenu cssmenu-right cssmenu-actionslinks">
+<ul class="level-0 hidden">
+<li>
+<a href="/english/wiki/wiki.php" class="cssmenu-title" title="Link to page Home">Home</a>
+</li>
+<li>
+<a href="/english/wiki/explorer.php" class="cssmenu-title" title="Link to page Explorer">Explorer</a>
+</li>
+</ul>
+</menu>
+<nav id="breadcrumb" itemprop="breadcrumb">
+<ol>
+<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+<a href="/english/" itemprop="url">
+<span itemprop="title">Home</span>
+</a>
+</li>
+<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" >
+<a href="wiki.php" itemprop="url">
+<span itemprop="title">Easy Guides</span>
+</a>
+</li>
+<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" >
+<a href="r-software" itemprop="url">
+<span itemprop="title">R software</span>
+</a>
+</li>
+<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" >
+<a href="import-and-export-data-using-r" itemprop="url">
+<span itemprop="title">Import and export data using R</span>
+</a>
+</li>
+<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" >
+<a href="exporting-data-from-r" itemprop="url">
+<span itemprop="title">Exporting Data From R</span>
+</a>
+</li>
+<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"  class="current" >
+<a href="r-xlsx-package-a-quick-start-guide-to-manipulate-excel-files-in-r" itemprop="url">
+<span itemprop="title">R xlsx package : A quick start guide to manipulate Excel files in R</span>
+</a>
+</li>
+</ol>
+</nav>
+<article id="article-wiki-151" class="article-wiki">
+<div>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5474463749888038"
+     data-ad-slot="2200070562"
+     data-ad-format="auto"></ins>
+<br/><br/>
+</div>
+<header>
+<h1>
+<a href="/english/syndication/rss/wiki/39" title="Syndication" class="fa fa-syndication"></a>
+R xlsx package : A quick start guide to manipulate Excel files in R
+</h1>
+</header>
+<!--
+<div style="width:100%;height:15px; background-color:white; margin-left:2px; margin-bottom:10px;" class = "google_link">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5474463749888038"
+     data-ad-slot="4712884969"
+     data-ad-format="link"></ins>
+            </div>
+            <div class = "ak_spacer_mobile"></div>
+            -->
+            
+<div class="content">
+<div class="wiki-tools-container">
+<menu id="cssmenu-wikitools" class="cssmenu cssmenu-right cssmenu-actionslinks cssmenu-tools">
+<ul class="level-0 hidden">
+<!--
+Inactivation print 
+<li><a href="../wiki/print.php?id=151" title="Printable version" class="cssmenu-title">
+<i class="fa fa-print"></i> Printable version
+</a></li>
+-->
+</ul>
+</menu>
+</div>
+<div class="spacer"></div>
+<div class="spacer"></div>
+
+  <!--====================== start from here when you copy to sthda================-->  
+  <div id="rdoc">
+<div id="TOC">
+<ul>
+<li><a href="#install-and-load-xlsx-package">Install and load xlsx package</a></li>
+<li><a href="#read-an-excel-file">Read an Excel file</a></li>
+<li><a href="#write-data-to-an-excel-file">Write data to an Excel file</a></li>
+<li><a href="#simple-r-function-to-export-quickly-multiple-data-sets-to-the-same-excel-workbook">Simple R function to export quickly multiple data sets to the same Excel workbook</a></li>
+<li><a href="#create-and-format-a-nice-excel-workbook">Create and format a nice Excel workbook</a><ul>
+<li><a href="#step-15.-create-a-new-excel-workbook">Step 1/5. Create a new Excel workbook</a></li>
+<li><a href="#step-25.-define-some-cell-styles-for-formating-the-workbook">Step 2/5. Define some cell styles for formating the workbook</a></li>
+<li><a href="#step-35.-write-data-and-plots-into-the-workbook">Step 3/5. Write data and plots into the workbook</a><ul>
+<li><a href="#create-a-new-sheet-in-the-workbook">Create a new sheet in the workbook</a></li>
+<li><a href="#add-a-title-into-a-worksheet">Add a title into a worksheet</a></li>
+<li><a href="#add-a-table-into-a-worksheet">Add a table into a worksheet</a></li>
+<li><a href="#add-a-plot-into-an-excel-worksheet">Add a plot into an Excel worksheet</a></li>
+<li><a href="#step-45.-save-the-excel-workbook-to-the-disk">Step 4/5. Save the Excel workbook to the disk</a></li>
+<li><a href="#step-55.-open-and-view-the-resulting-excel-workbook">Step 5/5. Open and view the resulting Excel workbook</a></li>
+<li><a href="#the-complete-r-script-to-create-a-nice-excel-report">The complete R script to create a nice Excel report</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#infos">Infos</a></li>
+</ul>
+</div>
+<p><br/></p>
+<p><img src="/english/../sthda/RDoc/images/r-xlsx-package.png" alt="Read and write excel file using R, xlsx package" /></p>
+<p>There are many solutions to <strong>import</strong> and <strong>export</strong> <strong>Excel files</strong> using <strong>R software</strong>. The different ways to connect <strong>R and Excel</strong> has been already discussed in our previous article [<a href="/english/wiki/r-excel-essentials-read-write-and-format-excel-files-using-r">R Excel essentials : Read, write and format Excel files using R</a>].</p>
+<p><strong>xlsx package</strong> is one of the powerful R packages to <strong>read</strong>, <strong>write</strong> and <strong>format</strong> <strong>Excel files</strong>. It is a java-based solution and it is available for Windows, Mac and Linux. It works for both <strong>Excel 2007</strong> and <strong>Excel 97/2000/XP/2003</strong> file formats (<strong>xls</strong> and <strong>xlsx </strong>file formats).</p>
+<p>Unfortunately the xlsx package is not especially well documented.</p>
+<p><span class="success">This article is a quick start guide to manipulate <strong>Excel files</strong> in <strong>R</strong> using <strong>xlsx package</strong> .</span></p>
+<br>
+<div class="block">
+<p>In this tutorial, you will learn how to use <strong>xlsx package</strong> to :</p>
+<ul>
+<li><strong>Read</strong> and <strong>write</strong> Excel files</li>
+<li><strong>Add data sets</strong> and <strong>images</strong> (or plots) into an Excel worksheet</li>
+<li><strong>Format the appearance</strong> of the Excel worksheet by setting data formats, fonts, colors and borders
+</li>
+</ul>
+</div>
+<p><br/></p>
+<div id="install-and-load-xlsx-package" class="section level1">
+<h1>Install and load xlsx package</h1>
+<pre class="r"><code>install.packages("xlsx")
+library("xlsx")</code></pre>
+<p><span class="warning">Note that, xlsx packages depends on <strong>rJava</strong> and <strong>xlsxjars</strong> R packages.</span></p>
+</div>
+<div id="read-an-excel-file" class="section level1">
+<h1>Read an Excel file</h1>
+<p>The R functions <strong>read.xlsx()</strong> and <strong>read.xlsx2()</strong> can be used to <strong>read</strong> the contents of an <strong>Excel</strong> worksheet into an <strong>R</strong> data.frame.</p>
+<p>The difference between these two functions is that :</p>
+<ul>
+<li><code>read.xlsx</code> preserves the data type. It tries to guess the class type of the variable corresponding to each column in the worksheet. Note that, <strong>read.xlsx</strong> function is slow for large data sets (worksheet with more than 100 000 cells).</li>
+<li><code>read.xlsx2</code> is faster on big files compared to read.xlsx function.</li>
+</ul>
+<p>The simplified formats of these two functions are:</p>
+<pre class="r"><code>read.xlsx(file, sheetIndex, header=TRUE, colClasses=NA)
+read.xlsx2(file, sheetIndex, header=TRUE, colClasses="character")</code></pre>
+<br/>
+<div class="block">
+<ul>
+<li><strong>file</strong> : the path to the file to read</li>
+<li><strong>sheetIndex</strong> : a number indicating the index of the sheet to read; e.g : use sheetIndex=1 to read the first sheet</li>
+<li><strong>header</strong> : a logical value. If TRUE, the first row is used as the names of the variables</li>
+<li><strong>colClasses</strong> : a character vector that represents the class of each column</li>
+</ul>
+</div>
+<p></br></p>
+<p>Examples :</p>
+<pre class="r"><code>library(xlsx)
+file <- system.file("tests", "test_import.xlsx", package = "xlsx")
+res <- read.xlsx(file, 1)  # read first sheet
+head(res[, 1:6])</code></pre>
+<pre><code>         NA. Population Income Illiteracy Life.Exp Murder
+1    Alabama       3615   3624        2.1    69.05   15.1
+2     Alaska        365   6315        1.5    69.31   11.3
+3    Arizona       2212   4530        1.8    70.55    7.8
+4   Arkansas       2110   3378        1.9    70.66   10.1
+5 California      21198   5114        1.1    71.71   10.3
+6   Colorado       2541   4884        0.7    72.06    6.8</code></pre>
+<p><span class="warning">Note that read.xlsx and read.xlsx2 functions can be used to read both .xls and .xlsx file formats.</span></p>
+</div>
+<div id="write-data-to-an-excel-file" class="section level1">
+<h1>Write data to an Excel file</h1>
+<p>The R functions <strong>write.xlsx()</strong> and <strong>write.xlsx2()</strong> can be used to <strong>export</strong> data from <strong>R</strong> to an <strong>Excel</strong> workbook. Note that <strong>write.xlsx2</strong> achieves better performance compared to <strong>write.xlsx</strong> for very large data.frame (with more than 100 000 cells).</p>
+<p>The simplified formats of these two functions are:</p>
+<pre class="r"><code>write.xlsx(x, file, sheetName="Sheet1", 
+  col.names=TRUE, row.names=TRUE, append=FALSE)
+write.xlsx2(x, file, sheetName="Sheet1",
+  col.names=TRUE, row.names=TRUE, append=FALSE)</code></pre>
+<br/>
+<div class="block">
+<ul>
+<li><strong>x</strong> : a data.frame to be written into the workbook</li>
+<li><strong>file</strong> : the path to the output file</li>
+<li><strong>sheetName</strong> : a character string to use for the sheet name.</li>
+<li><strong>col.names, row.names</strong> : a logical value specifying whether the column names/row names of x are to be written to the file</li>
+<li><strong>append</strong> : a logical value indicating if x should be appended to an existing file.</li>
+</ul>
+</div>
+<p></br></p>
+<p>Examples :</p>
+<pre class="r"><code>library(xlsx)
+write.xlsx(USArrests, file="myworkbook.xlsx", 
+           sheetName="USA Arrests")</code></pre>
+<p><span class="warning">Note that, the above code saves the Excel file in your current working directory.</span></p>
+<p><img src="/english/../sthda/RDoc/images/r-xlsx-write-excel-files.png" alt="Read and write excel file using R and xlsx package" /></p>
+<p>To <strong>add multiple data sets</strong> in the same Excel workbook, you have to use the argument <strong>append = TRUE</strong>. This is illustrated in the following R code :</p>
+<pre class="r"><code># Write the first data set in a new workbook
+write.xlsx(USArrests, file="myworkbook.xlsx",
+      sheetName="USA-ARRESTS", append=FALSE)
+# Add a second data set in a new worksheet
+write.xlsx(mtcars, file="myworkbook.xlsx", sheetName="MTCARS", 
+           append=TRUE)
+# Add a third data set
+write.xlsx(Titanic, file="myworkbook.xlsx", sheetName="TITANIC", 
+           append=TRUE)</code></pre>
+<p><img src="/english/../sthda/RDoc/images/r-xlsx-write-multiple-data-same-excel-files.png" alt="Read and write excel file using R and xlsx package" /></p>
+<p><span class="success">As you can see from the image above, it’s possible to add multiple data sets in the same Excel file. However, the method is very repetitive. You will find in the next section a simple function to add different types of data in a single call.</span></p>
+</div>
+<div id="simple-r-function-to-export-quickly-multiple-data-sets-to-the-same-excel-workbook" class="section level1">
+<h1>Simple R function to export quickly multiple data sets to the same Excel workbook</h1>
+<p>This section provides an R function to easily <strong>export multiple R objects to an Excel Workbook in a single call</strong>. The different objects (data) are written in different worksheets from the same Excel workbook. The object names are used for naming the different sheets.</p>
+<p>The R code of the function is :</p>
+<pre class="r"><code>#+++++++++++++++++++++++++++
+# xlsx.writeMultipleData
+#+++++++++++++++++++++++++++++
+# file : the path to the output file
+# ... : a list of data to write to the workbook
+xlsx.writeMultipleData <- function (file, ...)
+  {
+    require(xlsx, quietly = TRUE)
+    objects <- list(...)
+    fargs <- as.list(match.call(expand.dots = TRUE))
+    objnames <- as.character(fargs)[-c(1, 2)]
+    nobjects <- length(objects)
+    for (i in 1:nobjects) {
+        if (i == 1)
+            write.xlsx(objects[[i]], file, sheetName = objnames[i])
+        else write.xlsx(objects[[i]], file, sheetName = objnames[i],
+            append = TRUE)
+    }
+  }</code></pre>
+<p>This function is inspired from the one published on <a href="http://statmethods.wordpress.com/2014/06/19/quickly-export-multiple-r-objects-to-an-excel-workbook/" rel="nofollow">statmethods website</a></p>
+<p><span class="success">The function <strong>xlsx.writeMultipleData</strong> works for data frames, matrices, time series, and tables.</span></p>
+<p><strong>Example of usage :</strong></p>
+<p>Use the R code below to save mtcars (a data frame), Titanic (a table), AirPassengers (a time series) and state.x77 (a matrix) :</p>
+<pre class="r"><code>xlsx.writeMultipleData("myworkbook.xlsx",
+        mtcars, Titanic, AirPassengers, state.x77)</code></pre>
+<p><img src="/english/../sthda/RDoc/images/r-excel-multiple-object-workbook.png" alt="Read and write excel file using R, multiple objects in the same Excel workbook" /></p>
+</div>
+<div id="create-and-format-a-nice-excel-workbook" class="section level1">
+<h1>Create and format a nice Excel workbook</h1>
+<p>The function <strong>write.xlsx()</strong> is useful when you want just to write a data.frame to an xlsx file. The goal of this section is to show you how to create a nice Excel report containing a formatted data table and plots.</p>
+<p>The following steps are required :</p>
+<br/>
+<div class="block">
+<ol style="list-style-type: decimal">
+<li>Create a workbook</li>
+<li>Define some <strong>cell styles</strong> : <strong>Font</strong> color and size, text <strong>alignment</strong>, <strong>border</strong> and <strong>data format</strong>, …</li>
+<li>Write a table into an Excel spreadsheet using the defined styles in step 2.</li>
+<li>Save the workbook to a file</li>
+<li>Open and view the resulting workbook</li>
+</ol>
+</div>
+<p><br/></p>
+<p><span class="warning">In the next sections, I will show you step by step how to change the appearance of Excel worksheet in R. Note that, formatting Excel worksheets using <strong>xlsx R package</strong> requires some hard coding. This is why, I recently implemented the <a href="/english/wiki/r-excel-essentials-read-write-and-format-excel-files-using-r"><strong>r2excel package</strong></a> which depends on <strong>xlsx</strong> package and it provides an <strong>easy to use functions</strong> to quickly import data from Excel files and to create a nice Excel report. <strong>r2excel package</strong> is described in my previous post : <a href="/english/wiki/r-excel-essentials-read-write-and-format-excel-files-using-r">R Excel essentials : Read, write and format Excel files using R</a>
+</span></p>
+<div id="step-15.-create-a-new-excel-workbook" class="section level2">
+<h2>Step 1/5. Create a new Excel workbook</h2>
+<p>The function <strong>createWorkbook()</strong> can be used. It works for both <strong>.xls</strong> and <strong>.xlsx</strong> file formats.</p>
+<pre class="r"><code># create a new workbook for outputs
+# possible values for type are : "xls" and "xlsx"
+wb<-createWorkbook(type="xlsx")</code></pre>
+</div>
+<div id="step-25.-define-some-cell-styles-for-formating-the-workbook" class="section level2">
+<h2>Step 2/5. Define some cell styles for formating the workbook</h2>
+<p>We’ll define some cell styles to change :</p>
+<ul>
+<li>the appearance of the <strong>sheet title</strong></li>
+<li>the appearance of the <strong>row and column names</strong> of the data table</li>
+<li>the <strong>text alignment</strong> for the table column names</li>
+<li>the cell borders around the column names</li>
+</ul>
+<p>The R function <strong>CellStyle()</strong> can be used to create cell styles. A simplified format of the function is :</p>
+<pre class="r"><code>CellStyle(wb, dataFormat=NULL, alignment=NULL,
+          border=NULL, fill=NULL, font=NULL)</code></pre>
+<br/>
+<div class="block> - **wb** : a workbook object as returned by createWorkbook or loadWorkbook. - **dataFormat** : a *DataFormat* object - **alignment** : a *Alignment* object - **border** : a *Border* object - **font** : a *Font* object </div> <br/> ```r # Define some cell styles #++++++++++++++++++++ # Title and sub title styles TITLE_STYLE <- CellStyle(wb)+ Font(wb, heightInPoints=16, color=" blue",="" isbold="TRUE," underline="1)" sub_title_style="" <-="" cellstyle(wb)="" +="" font(wb,="" heightinpoints="14," isitalic="TRUE," isbold="FALSE)" #="" styles="" for="" the="" data="" table="" row="" column="" names="" table_rownames_style="" <-="" cellstyle(wb)="" +="" font(wb,="" isbold="TRUE)" table_colnames_style="" <-="" cellstyle(wb)="" +="" font(wb,="" isbold="TRUE)" +="" alignment(wraptext="TRUE," horizontal="ALIGN_CENTER" )="" +="" border(color="black" ,="" position="c("TOP"," "bottom"),="" pen="c("BORDER_THIN"," "border_thick"))="" ```="" <br="">
+<ul>
+<li><strong>wb</strong> : a workbook object as returned by createWorkbook or loadWorkbook.</li>
+<li><strong>dataFormat</strong> : a <em>DataFormat</em> object</li>
+<li><strong>alignment</strong> : a <em>Alignment</em> object</li>
+<li><strong>border</strong> : a <em>Border</em> object</li>
+<li><strong>font</strong> : a <em>Font</em> object</li>
+</ul>
+</div>
+<p><br/></p>
+<pre class="r"><code># Define some cell styles
+#++++++++++++++++++++
+# Title and sub title styles
+TITLE_STYLE <- CellStyle(wb)+ Font(wb,  heightInPoints=16, 
+                            color="blue", isBold=TRUE, underline=1)
+SUB_TITLE_STYLE <- CellStyle(wb) + 
+                    Font(wb,  heightInPoints=14, 
+                          isItalic=TRUE, isBold=FALSE)
+# Styles for the data table row/column names
+TABLE_ROWNAMES_STYLE <- CellStyle(wb) + Font(wb, isBold=TRUE)
+TABLE_COLNAMES_STYLE <- CellStyle(wb) + Font(wb, isBold=TRUE) +
+    Alignment(wrapText=TRUE, horizontal="ALIGN_CENTER") +
+    Border(color="black", position=c("TOP", "BOTTOM"), 
+           pen=c("BORDER_THIN", "BORDER_THICK")) </code></pre>
+<br/>
+<div class="block">
+<ol style="list-style-type: decimal">
+<li><strong>wb</strong> : a workbook object as returned by <code>createWorkbook</code> or <code>loadWorkbook</code>.</li>
+<li><strong>The main arguments for Font() function</strong> :
+<ul>
+<li><strong>color</strong> : font color</li>
+<li><strong>heightInPoints</strong> : <em>font size</em>. Usual values are 10, 12, 14, etc</li>
+<li><strong>isBold, isItalic</strong> : a logical indicating whether the font should be <em>bold</em> or <em>italic</em></li>
+<li><strong>underline</strong> : an integer specifying the <em>thickness of the underline</em>. Possible values are 0, 1, 2.</li>
+<li><strong>name</strong> : the font to use; e.g: “Courier New”.</li>
+</ul></li>
+<li><strong>The main arguments for Alignment() function</strong> :
+<ul>
+<li><strong>wrapText</strong> : a logical indicating whether the text should be wrapped.</li>
+<li><strong>horizontal</strong> : the <em>horizontal alignment</em>. Possible values are : “ALIGN_CENTER”, “ALIGN_JUSTIFY”, “ALIGN_LEFT”, “ALIGN_RIGHT”.</li>
+<li><strong>vertical</strong> : the <em>vertical alignment</em>. Possible values are : “VERTICAL_BOTTOM”, “VERTICAL_CENTER”, “VERTICAL_JUSTIFY”, “VERTICAL_TOP”</li>
+<li><strong>rotation</strong> : a numerical value specifying the degrees you want to <em>rotate the text</em> in the cell. Default value is 0.</li>
+</ul></li>
+<li><strong>The main arguments for Border() function</strong> :
+<ul>
+<li><strong>color</strong> : the <em>border color</em>; e.g : color=“red” or color =“#FF0000”</li>
+<li><em>position</em> : the <em>border position</em>. Allowed values are : “BOTTOM”, “LEFT”, “TOP”, “RIGHT”</li>
+<li><strong>pen</strong> : the pen style. Allowed values are : “BORDER_DASH_DOT”, “BORDER_DASH_DOT_DOT”, “BORDER_DASHED”, “BORDER_DOTTED”, “BORDER_DOUBLE”, “BORDER_HAIR”, “BORDER_MEDIUM”, “BORDER_MEDIUM_DASH_DOT”, “BORDER_MEDIUM_DASH_DOT_DOT”, “BORDER_MEDIUM_DASHED”, “BORDER_NONE”, “BORDER_SLANTED_DASH_DOT”, “BORDER_THICK”, “BORDER_THIN”.</li>
+</ul></li>
+</ol>
+</div>
+<p><br/></p>
+</div>
+<div id="step-35.-write-data-and-plots-into-the-workbook" class="section level2">
+<h2>Step 3/5. Write data and plots into the workbook</h2>
+<div id="create-a-new-sheet-in-the-workbook" class="section level3">
+<h3>Create a new sheet in the workbook</h3>
+<p>To add data, the first step is to create a sheet in the workbook to contain the data. This can be done using the function <strong>creatSheet()</strong> :</p>
+<pre class="r"><code># Create a new sheet in the workbook
+sheet <- createSheet(wb, sheetName = "US State Facts")</code></pre>
+</div>
+<div id="add-a-title-into-a-worksheet" class="section level3">
+<h3>Add a title into a worksheet</h3>
+<p>To add a title, the procedure is :</p>
+<ol style="list-style-type: decimal">
+<li>create a new row</li>
+<li>create a cell in this row to contain the title.</li>
+<li>set the cell value.</li>
+</ol>
+<p>To simplify the R code, I wrote a helper function for adding a title :</p>
+<pre class="r"><code>#++++++++++++++++++++++++
+# Helper function to add titles
+#++++++++++++++++++++++++
+# - sheet : sheet object to contain the title
+# - rowIndex : numeric value indicating the row to 
+  #contain the title
+# - title : the text to use as title
+# - titleStyle : style object to use for title
+xlsx.addTitle<-function(sheet, rowIndex, title, titleStyle){
+  rows <-createRow(sheet,rowIndex=rowIndex)
+  sheetTitle <-createCell(rows, colIndex=1)
+  setCellValue(sheetTitle[[1,1]], title)
+  setCellStyle(sheetTitle[[1,1]], titleStyle)
+}</code></pre>
+<p><span class="warning">Copy and paste the code of the function xlsx.addTitle into your R console before continuing.</span></p>
+<pre class="r"><code># Add title
+xlsx.addTitle(sheet, rowIndex=1, title="US State Facts",
+      titleStyle = TITLE_STYLE)
+# Add sub title
+xlsx.addTitle(sheet, rowIndex=2, 
+      title="Data sets related to the 50 states of USA.",
+      titleStyle = SUB_TITLE_STYLE)</code></pre>
+</div>
+<div id="add-a-table-into-a-worksheet" class="section level3">
+<h3>Add a table into a worksheet</h3>
+<p>The function <strong>addDataframe()</strong> can be used to add the table in the new sheet.</p>
+<p><code>state.x77</code> data table is used in the following example :</p>
+<pre class="r"><code>head(state.x77)</code></pre>
+<pre><code>           Population Income Illiteracy Life Exp Murder HS Grad Frost   Area
+Alabama          3615   3624        2.1    69.05   15.1    41.3    20  50708
+Alaska            365   6315        1.5    69.31   11.3    66.7   152 566432
+Arizona          2212   4530        1.8    70.55    7.8    58.1    15 113417
+Arkansas         2110   3378        1.9    70.66   10.1    39.9    65  51945
+California      21198   5114        1.1    71.71   10.3    62.6    20 156361
+Colorado         2541   4884        0.7    72.06    6.8    63.9   166 103766</code></pre>
+<pre class="r"><code># Add a table
+addDataFrame(state.x77, sheet, startRow=3, startColumn=1, 
+             colnamesStyle = TABLE_COLNAMES_STYLE,
+             rownamesStyle = TABLE_ROWNAMES_STYLE)
+# Change column width
+setColumnWidth(sheet, colIndex=c(1:ncol(state.x77)), colWidth=11)</code></pre>
+<br/>
+<div class="block">
+<ul>
+<li><strong>Arguments for addDataFrame() function</strong> :
+<ul>
+<li><strong>startRow</strong>, <strong>startColumn</strong> : a numeric value indicating the starting row and column</li>
+<li><strong>colnameStyle</strong>, <strong>rownameStyle</strong> : A CellStyle object to customize the table header and row names</li>
+</ul></li>
+<li><strong>Arguments for setColumnWidth() function</strong> :
+<ul>
+<li><strong>colIndex</strong> : a numeric vector indicating the columns you want to change the size.</li>
+<li><strong>colWidth</strong> : the width of the column</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="add-a-plot-into-an-excel-worksheet" class="section level3">
+<h3>Add a plot into an Excel worksheet</h3>
+<pre class="r"><code># create a png plot
+png("boxplot.png", height=800, width=800, res=250, pointsize=8)
+boxplot(count ~ spray, data = InsectSprays,
+         col = "blue")
+dev.off()
+# Create a new sheet to contain the plot
+sheet <-createSheet(wb, sheetName = "boxplot")
+# Add a title to the sheet
+xlsx.addTitle(sheet, rowIndex=1, 
+              title="Box plot using InsectSprays data",
+              titleStyle = TITLE_STYLE)
+# Add the plot created previously
+addPicture("boxplot.png", sheet, scale = 1, startRow = 4,
+          startColumn = 1)
+# Remove the plot from the disk
+res<-file.remove("boxplot.png")</code></pre>
+</div>
+<div id="step-45.-save-the-excel-workbook-to-the-disk" class="section level3">
+<h3>Step 4/5. Save the Excel workbook to the disk</h3>
+<pre class="r"><code># Save the workbook to a file
+saveWorkbook(wb, "r-xlsx-report-example.xlsx")</code></pre>
+</div>
+<div id="step-55.-open-and-view-the-resulting-excel-workbook" class="section level3">
+<h3>Step 5/5. Open and view the resulting Excel workbook</h3>
+<p>Go to your current working directory and open the created workbook.</p>
+<p><img src="/english/../sthda/RDoc/images/r-excel-xlsx-report-example1.png" alt="Read and write excel file using R and xlsx package" /> <img src="/english/../sthda/RDoc/images/r-excel-xlsx-report-example2.png" alt="Read and write excel file using R and xlsx package" /></p>
+<p><span class="warning"> As mentioned above, formatting Excel worksheets can be done easily and quickly using <a href="/english/wiki/r-excel-essentials-read-write-and-format-excel-files-using-r"><strong>r2excel package</strong></a>. <strong>r2excel package</strong> is described in my previous post : <a href="/english/wiki/r-excel-essentials-read-write-and-format-excel-files-using-r">R Excel essentials : Read, write and format Excel files using R</a>
+</span></p>
+</div>
+<div id="the-complete-r-script-to-create-a-nice-excel-report" class="section level3">
+<h3>The complete R script to create a nice Excel report</h3>
+<p>The complete R script to create the workbook above is :</p>
+<pre class="r"><code>library(xlsx)
+# create a new workbook for outputs
+#++++++++++++++++++++++++++++++++++++
+# possible values for type are : "xls" and "xlsx"
+wb<-createWorkbook(type="xlsx")
+# Define some cell styles
+#++++++++++++++++++++++++++++++++++++
+# Title and sub title styles
+TITLE_STYLE <- CellStyle(wb)+ Font(wb,  heightInPoints=16, 
+                                   color="blue", isBold=TRUE, underline=1)
+SUB_TITLE_STYLE <- CellStyle(wb) + 
+  Font(wb,  heightInPoints=14,
+       isItalic=TRUE, isBold=FALSE)
+# Styles for the data table row/column names
+TABLE_ROWNAMES_STYLE <- CellStyle(wb) + Font(wb, isBold=TRUE)
+TABLE_COLNAMES_STYLE <- CellStyle(wb) + Font(wb, isBold=TRUE) +
+  Alignment(wrapText=TRUE, horizontal="ALIGN_CENTER") +
+  Border(color="black", position=c("TOP", "BOTTOM"), 
+         pen=c("BORDER_THIN", "BORDER_THICK")) 
+# Create a new sheet in the workbook
+#++++++++++++++++++++++++++++++++++++
+sheet <- createSheet(wb, sheetName = "US State Facts")
+#++++++++++++++++++++++++
+# Helper function to add titles
+#++++++++++++++++++++++++
+# - sheet : sheet object to contain the title
+# - rowIndex : numeric value indicating the row to 
+  #contain the title
+# - title : the text to use as title
+# - titleStyle : style object to use for title
+xlsx.addTitle<-function(sheet, rowIndex, title, titleStyle){
+  rows <-createRow(sheet,rowIndex=rowIndex)
+  sheetTitle <-createCell(rows, colIndex=1)
+  setCellValue(sheetTitle[[1,1]], title)
+  setCellStyle(sheetTitle[[1,1]], titleStyle)
+}
+# Add title and sub title into a worksheet
+#++++++++++++++++++++++++++++++++++++
+# Add title
+xlsx.addTitle(sheet, rowIndex=1, title="US State Facts",
+      titleStyle = TITLE_STYLE)
+# Add sub title
+xlsx.addTitle(sheet, rowIndex=2, 
+      title="Data sets related to the 50 states of USA.",
+      titleStyle = SUB_TITLE_STYLE)
+# Add a table into a worksheet
+#++++++++++++++++++++++++++++++++++++
+addDataFrame(state.x77, sheet, startRow=3, startColumn=1, 
+             colnamesStyle = TABLE_COLNAMES_STYLE,
+             rownamesStyle = TABLE_ROWNAMES_STYLE)
+# Change column width
+setColumnWidth(sheet, colIndex=c(1:ncol(state.x77)), colWidth=11)
+# Add a plot into a worksheet
+#++++++++++++++++++++++++++++++++++++
+# create a png plot
+png("boxplot.png", height=800, width=800, res=250, pointsize=8)
+boxplot(count ~ spray, data = InsectSprays,
+         col = "blue")
+dev.off()
+# Create a new sheet to contain the plot
+sheet <-createSheet(wb, sheetName = "boxplot")
+# Add title
+xlsx.addTitle(sheet, rowIndex=1, title="Box plot using InsectSprays data",
+      titleStyle = TITLE_STYLE)
+# Add the plot created previously
+addPicture("boxplot.png", sheet, scale = 1, startRow = 4,
+           startColumn = 1)
+# remove the plot from the disk
+res<-file.remove("boxplot.png")
+# Save the workbook to a file...
+#++++++++++++++++++++++++++++++++++++
+saveWorkbook(wb, "r-xlsx-report-example.xlsx")</code></pre>
+</div>
+</div>
+</div>
+<div id="infos" class="section level1">
+<h1>Infos</h1>
+<p><span class="warning"> This analysis has been performed using R (ver. 3.1.0). </span></p>
+</div>
+<style>.content{padding:0px;}</style>
+</div><!--end rdoc-->
+<!--====================== stop here when you copy to sthda================-->
+
+<div class="spacer"></div>
+<!--============ AK ========-->
+<br/>
+<div class = "success english-msg">
+Enjoyed this article? I’d be very grateful if you’d help it spread by emailing it to a friend, or sharing it on Twitter, Facebook or Linked In. 
+<br/><br/>
+Show me some love with the like buttons below... Thank you and please don't forget to share and comment below!!
+</div>
+<div class = "success french-msg">
+Avez vous aimé cet article? Je vous serais très reconnaissant si vous aidiez à sa diffusion en l'envoyant par courriel à un ami ou en le partageant sur Twitter, Facebook ou Linked In. 
+<br/><br/>
+Montrez-moi un peu d'amour avec les like ci-dessous ... Merci et n'oubliez pas, s'il vous plaît, de partager et de commenter ci-dessous!
+</div>
+<br/>
+<!--
+<div style="width:100%;height:15px; background-color:white; margin-left:2px; margin-bottom:10px;" class = "google_link">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5474463749888038"
+     data-ad-slot="4712884969"
+     data-ad-format="link"></ins>
+            </div><br/>
+<div class="spacer"></div>
+-->
+                
+                <div class="addthis_native_toolbox"></div>
+                <center>
+                    <br/><br/><br/>
+                     <div class = "annonce_adaptable_bottom">
+                       <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5474463749888038"
+     data-ad-slot="5770815769"
+     data-ad-format="auto"></ins>
+                    </div>
+                </center>
+                <br/>
+                <!--====================================
+                RECOMMENDED BOOKS
+                ========================================-->
+                <div id = "recommended_books">
+                <h2 class = "wiki_paragraph1">Recommended for You!</h2>
+                <br/>
+                 
+                <div class = "small-block book_ads content-privileged-friends">
+                <center>
+                <a href = "http://www.sthda.com/english/web/5-bookadvisor/54-machine-learning-essentials/">
+                <img src = "http://www.sthda.com/english/upload/machine-learning-essentials-frontcover-200px.png" /><br/>
+Machine Learning Essentials: Practical Guide in R
+</a>
+</center>
+                </div>
+                <div class = "small-block book_ads content-privileged-friends">
+                <center>
+                <a href = "http://www.sthda.com/english/web/5-bookadvisor/17-practical-guide-to-cluster-analysis-in-r/">
+                <img src = "http://www.sthda.com/english/upload/practical-guide-to-cluster-analysis-in-r.jpg" /><br/>
+Practical Guide to Cluster Analysis in R
+</a>
+</center>
+                </div>
+                <div class = "small-block book_ads content-privileged-friends">
+                <center>
+                <a href = "http://www.sthda.com/english/web/5-bookadvisor/50-practical-guide-to-principal-component-methods-in-r/">
+                <img src = "http://www.sthda.com/english/sthda-upload/images/principal-component-methods-cover-200px.png" width = "100px", height="125px;" /><br/>
+Practical Guide to Principal Component Methods in R
+</a>
+</center>
+                </div>
+                <div class = "small-block book_ads content-privileged-friends">
+                <center>
+                <a href = "http://www.sthda.com/english/web/5-bookadvisor/52-r-graphics-essentials-for-great-data-visualization-200-practical-examples-you-want-to-know-for-data-science/">
+                <img src = "http://www.sthda.com/english/upload/r-graphics-essentials-cookbook-100.png" /><br/>
+R Graphics Essentials for Great Data Visualization
+</a>
+</center>
+                </div>
+                <div class = "small-block book_ads content-privileged-friends">
+                <center>
+                <a href = "http://www.sthda.com/english/web/5-bookadvisor/53-network-analysis-and-visualization-in-r/">
+                <img src = "http://www.sthda.com/english/upload/network-analysis-and-visualization-in-r-200px.png" width = "100px" /><br/>
+Network Analysis and Visualization in R
+</a>
+</center>
+                </div>
+                <div class = "small-block book_ads">
+                <br/><br/>
+                <center>
+                <a href = "http://www.sthda.com/english/web/5-bookadvisor/">
+                <span><i class="fa fa-4x fa-arrow-circle-right" aria-hidden="true"></i></span><br/>
+More books on R and data science 
+</a>
+</center>
+                </div>
+                <!--end books -->
+                
+               <br/>
+                <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+                <style type="text/css">
+                    #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; border: 1px solid #2E9FDF; border-left: 6px solid #2E9FDF; padding: 10px;}
+                </style>
+                <div id="mc_embed_signup">
+                <br/>
+                <span style="color:#FC4E07; font-size: 1.5em;">Want to Learn More on R Programming and Data Science?</span><br><br/>
+Follow us <a href="https://feedburner.google.com/fb/a/mailverify?uri=sthda&loc=en_US">by Email</a>
+<form style="padding:3px;text-align:center;" action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('https://feedburner.google.com/fb/a/mailverify?uri=sthda', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><p><input type="text" style="width:70%;" name="email"/></p><input type="hidden" value="sthda" name="uri"/><input type="hidden" name="loc" value="en_US"/><input type="submit" value="Subscribe" /><p>by <a href="https://feedburner.google.com" target="_blank">FeedBurner</a></p></form>
+On Social Networks:
+<div class="addthis_inline_follow_toolbox"></div>
+                </div>
+                <br/><br/>
+                 
+                <div class="block get_involved">
+                <strong><i class="fa fa-2x fa-group"></i>&nbsp;Get involved : </strong><br/>
+             <i class="fa fa-share fa-2x"></i>&nbsp;
+                    Click to <b>follow us</b> on <a href="https://www.facebook.com/1570814953153056" class="facebook_page" target="_blank">Facebook</a> and 
+                         <a href="https://plus.google.com/108962828449690000520" rel="publisher">Google+</a> : 
+                         <a href="https://www.facebook.com/1570814953153056" class="facebook_page" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>&nbsp;&nbsp;
+                        <a href="https://plus.google.com/108962828449690000520" rel="publisher" class="google_page" target="_blank"><i class="fa fa-google-plus-square fa-2x"></i></a><br/>
+                        
+                     <i class="fa fa-comment fa-2x"></i>&nbsp; <b>Comment this article</b> by clicking on "Discussion" button (top-right position of this page)<br/>
+             </div>
+             
+<div class="spacer"></div>
+</div>
+<footer>
+<div class="wiki-hits">This page has been seen 403966 times</div>
+</footer>
+</article>
+</div>
+</div>
+<div class="spacer"></div>
+</div>
+<footer id="footer">
+<div id="top-footer">
+<div id="newsletter">
+<form action="/english/newsletter/?url=/subscribe/" method="post">
+<div class="newsletter-form input-element-button">
+<span class="newsletter-title">Newsletter</span> 
+<input type="text" name="mail_newsletter" maxlength="50" value="" placeholder="Email">
+<input type="hidden" name="subscribe" value="subscribe">
+<input type="hidden" name="token" value="7781d1ed9bbf9fe2">
+<button type="submit" class="newsletter-submit"><i class="fa fa-envelope-o"></i></button>
+</div>
+</form>
+</div>
+<div class="spacer"></div>
+</div>
+<div class="footer-infos">
+<span class="footer-infos-powered-by">Boosted by <a href="http://www.phpboost.com" title="Link to PHPBoost CMS official website">PHPBoost</a> </span>
+</div>
+</footer>
+   
+<link rel="stylesheet" href="/english/rsthda/templates/scripts/jqwidgets-ver3.5.0//styles/jqx.base.css" type="text/css" />
+<link rel="stylesheet" href="/english/rsthda/templates/scripts/jqwidgets-ver3.5.0//styles/jqx.ui-start.css" type="text/css" />
+<!--- ak -->
+  
+ 
+ 
+<style>#rdoc .caption{display:none;}</style>
+ 
+<a id="scroll-to-top" class="scroll-to" href="#" title="Scroll to Top"><i class="fa fa-chevron-up"></i></a>
+<script>
+<!--
+//Variables PHPBoost
+var PATH_TO_ROOT = "/english";
+var TOKEN        = "7781d1ed9bbf9fe2";
+var THEME        = "sthda";
+var LANG         = "english";
+//Variables BBCode
+var L_HIDE_MESSAGE    = 'This message is hidden, click here to reveal its contents.';
+var L_HIDE_HIDEBLOCK  = 'Click here to hide this message.';
+var L_COPYTOCLIPBOARD = 'Copy to Clipboard';
+//Variables CookieBar
+var COOKIEBAR_DURATION        = 12;
+var COOKIEBAR_TRACKING_MODE   = 'notracking';
+var L_COOKIEBAR_CONTENT       = 'This website uses cookies to ensure you get the best experience on our website.';
+var L_COOKIEBAR_UNDERSTAND    = 'Ok';
+var L_COOKIEBAR_ALLOWED       = 'Allowed';
+var L_COOKIEBAR_DECLINED      = 'Declined';
+var L_COOKIEBAR_MORE_TITLE    = 'Explanations on the management of cookies and the &quot;cookie-bar&quot; (Learn more)';
+var L_COOKIEBAR_MORE          = 'Learn more';
+var L_COOKIEBAR_CHANGE_CHOICE = 'Change your preferences';
+var U_COOKIEBAR_ABOUTCOOKIE   = '/english/user/aboutcookie/';
+-->
+</script><script src="/english/kernel/lib/js/jquery/jquery.js"></script><script src="/english/kernel/lib/js/global.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script><script src="/english/rsthda/templates/scripts/jqwidgets-ver3.5.0/jqxcore.js"></script><script src="/english/rsthda/templates/scripts/jqwidgets-ver3.5.0/jqxmenu.js"></script><script src="/english/rsthda/templates/scripts/jqwidgets-ver3.5.0/jqxbuttons.js"></script><script src="/english/templates/sthda/ak/global.js"></script><script src="/english/sthda/js/jquery.gdocsviewer.min.js"></script><script src="/english/templates/sthda/ak/knitr.rcode.highlight.js"></script><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-50f0e98f7770f530"></script><script src="/english/kernel/lib/js/lightcase/lightcase.js"></script><script src="/english/user/templates/js/cookiebar.js"></script><script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#000"
+    },
+    "button": {
+      "background": "#f1d600"
+    }
+  },
+  "position": "bottom-left",
+  "type": "opt-in",
+  "content": {
+    "message": "This website uses cookies to ensure you get the best experience on our website, to personalize content and ads and to analyze our traffic. We also share information about your use of our site with our social media, advertising and analytics partners. By using our site you agree to our use of cookies",
+    "dismiss": "Decline",
+    "allow": "OK",
+    "href": "https://www.google.com/intl/en/policies/privacy/partners/"
+  }
+})});
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-5474463749888038",
+          enable_page_level_ads: true
+     });
+function check_search_mini_form_post()
+{
+var textSearched = document.getElementById('TxTMiniSearched').value;
+if (textSearched.length > 3)
+{
+textSearched = escape_xmlhttprequest(textSearched);
+return true;
+}
+else
+{
+alert('The size of the string you\'re searching for must be at least 4 characters long!');
+return false;
+}
+}
+jQuery(document).ready(function() {
+jQuery('#search-token').val(TOKEN);
+});
+jQuery("#cssmenu-1764").menumaker({ title: "R & Data Mining", format: "multitoggle", breakpoint: 768 }); 
+function check_connect()
+{
+if( document.getElementById('login').value == "" )
+{
+alert("Please enter a nickname !");
+return false;
+}
+if( document.getElementById('password').value == "" )
+{
+alert("Please enter a password !");
+return false;
+}
+}
+function open_submenu(myid)
+{
+jQuery('#' + myid).toggleClass('active');
+}
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    jQuery("#cssmenu-1825").menumaker({ title: "R Packages", format: "multitoggle", breakpoint: 768 }); 
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  jQuery("#cssmenu-1849").menumaker({ title: "Blogroll", format: "multitoggle", breakpoint: 768 }); 
+jQuery("#cssmenu-module-wiki").menumaker({
+title: "Actions menu for module Wiki",
+format: "multitoggle",
+actionslinks: true,
+breakpoint: 768
+});
+jQuery(document).ready(function() {
+jQuery("#cssmenu-module-wiki ul").removeClass('hidden');
+});
+(adsbygoogle = window.adsbygoogle || []).push({});
+(adsbygoogle = window.adsbygoogle || []).push({});
+jQuery("#cssmenu-wikitools").menumaker({
+title: "Tools",
+format: "multitoggle",
+breakpoint: 768
+});
+jQuery(document).ready(function() {
+jQuery("#cssmenu-wikitools ul").removeClass('hidden');
+});
+jQuery(document).ready(function () {
+    jQuery('h1').addClass('wiki_paragraph1');
+    jQuery('h2').addClass('wiki_paragraph2');
+    jQuery('h3').addClass('wiki_paragraph3');
+    jQuery('h4').addClass('wiki_paragraph4');
+    });//add phpboost class to header
+(adsbygoogle = window.adsbygoogle || []).push({});
+(adsbygoogle = window.adsbygoogle || []).push({});
+ 
+/*<![CDATA[*/
+var jQuery = jQuery.noConflict();
+jQuery(document).ready(function() {
+   if(jQuery('a.embed').length!=0) jQuery('a.embed').gdocsViewer({width: "98%", height: 600});
+    if(jQuery('a.view').length!=0) jQuery('a.view').gdocsViewer({width: "98%", height: 600});
+});
+/*]]>*/
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+ 
+jQuery('[data-confirmation]').each(function() {
+data_confirmation = jQuery(this).attr('data-confirmation');
+if (data_confirmation == 'delete-element')
+var message = 'Do you really want to delete this item ?';
+else
+var message = data_confirmation;
+this.onclick = function () { return confirm(message); }
+});
+jQuery(document).ready(function() {
+jQuery('a[rel^=lightbox]').attr('data-rel', 'lightcase:collection');
+jQuery('a[data-lightbox^=formatter]').attr('data-rel', 'lightcase:collection');
+jQuery('a[data-rel^=lightcase]').lightcase({
+labels : {
+'errorMessage'    : 'The item you requested does not exist.',
+'sequenceInfo.of' : ' ' + 'of' + ' ',
+'close'           : 'Close',
+'navigator.prev'  : 'Previous',
+'navigator.next'  : 'Next',
+'navigator.play'  : 'Play',
+'navigator.pause' : 'Pause'
+},
+maxHeight: window.innerHeight,
+maxWidth: window.innerWidth,
+shrinkFactor: 0.85
+});
+});
+jQuery('#table').basictable();
+jQuery('#table2').basictable();
+jQuery('#table3').basictable();
+jQuery('#table4').basictable();
+jQuery('#table5').basictable();
+jQuery(function() {
+jQuery(".lined").linedtextarea();
+});
+</script></body>
+</html>
